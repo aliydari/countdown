@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Lato', sans-serif;
+      color: #388376;
+      overflow: hidden;
+    }
+    .wrap {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 300;
+      text-align: center;
+    }
+    .num { font-size: 56px; }
+    .label { font-size: 12px; letter-spacing: 2px; }
+    .colon { font-size: 40px; }
+  </style>
+</head>
+
+<body>
+
+<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda%20Alicia%20y%20Dar%C3%ADo&dates=20261003T120000Z/20261003T215959Z&ctz=Europe/Madrid&details=%C2%A1Ha%20llegado%20el%20gran%20d%C3%ADa!&location=Molino%20de%20San%20L%C3%A1zaro%2C%20restaurante%20acceso%20por%20terraza%2C%20Molino%20de%20San%20L%C3%A1zaro%2C%20P.%C2%BA%20de%20la%20Ribiera%2C%2022%2C%20planta%20baja%2C%2050014%20Zaragoza"
+target="_blank"
+style="text-decoration:none; color:#388376;">
+
+<div id="countdown" class="wrap">
+  <div>
+    <div id="d" class="num">0</div>
+    <div class="label">DÍAS</div>
+  </div>
+
+  <div>
+    <div id="h" class="num">0</div>
+    <div class="label">HORAS</div>
+  </div>
+
+  <div class="colon">:</div>
+
+  <div>
+    <div id="m" class="num">0</div>
+    <div class="label">MINUTOS</div>
+  </div>
+
+  <div class="colon">:</div>
+
+  <div>
+    <div id="s" class="num">0</div>
+    <div class="label">SEGUNDOS</div>
+  </div>
+</div>
+
+</a>
+
+<script>
+const target = new Date("2026-10-03T14:00:00+02:00").getTime();
+
+function tick() {
+  const now = Date.now();
+  const diff = target - now;
+
+  if (diff <= 0) {
+    document.getElementById("countdown").innerHTML = "¡HA LLEGADO EL GRAN DÍA!";
+    return;
+  }
+
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff / 3600000) % 24);
+  const m = Math.floor((diff / 60000) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("d").textContent = d;
+  document.getElementById("h").textContent = String(h).padStart(2,'0');
+  document.getElementById("m").textContent = String(m).padStart(2,'0');
+  document.getElementById("s").textContent = String(s).padStart(2,'0');
+}
+
+tick();
+setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
